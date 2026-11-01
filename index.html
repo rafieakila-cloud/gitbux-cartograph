@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17251f">
+    <meta name="description" content="Gitbux CartoGraph, mesin peta vektor 2D yang dikembangkan oleh Rafie Akila Cloud dan Bawapi.">
+    <title>Gitbux CartoGraph</title>
+    <link rel="icon" href="./assets/gitbux-cartograph-logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./src/style.css">
+    <script type="module" src="./src/cartograph.js"></script>
+  </head>
+  <body>
+    <main class="map-shell">
+      <canvas id="mapCanvas" aria-label="Peta interaktif Gitbux CartoGraph"></canvas>
+
+      <header class="topbar">
+        <div class="brand">
+          <img class="brand-mark" src="./assets/gitbux-cartograph-logo.svg" alt="Logo kertas tersenyum Gitbux CartoGraph">
+          <span>
+            <strong>Gitbux CartoGraph</strong>
+            <small>Mesin peta vektor mandiri</small>
+          </span>
+        </div>
+        <div class="top-actions">
+          <span id="mapStatus" class="map-status" role="status" aria-live="polite">Menyiapkan peta…</span>
+          <button id="reloadButton" class="reload-button" type="button">Muat ulang peta</button>
+        </div>
+      </header>
+
+      <section class="map-controls" aria-label="Kontrol peta">
+        <button id="zoomInButton" type="button" aria-label="Perbesar peta">+</button>
+        <output id="zoomLevel" aria-live="polite">—</output>
+        <button id="zoomOutButton" type="button" aria-label="Perkecil peta">−</button>
+        <span class="control-divider"></span>
+        <button id="homeButton" class="home-button" type="button" aria-label="Kembali ke tampilan dunia">⌂</button>
+      </section>
+
+      <div class="map-hint">Seret untuk menggeser · Gulir untuk zoom · Klik untuk koordinat</div>
+      <footer class="map-attribution">
+        CartoGraph · Data batas wilayah Natural Earth (public domain)
+      </footer>
+      <div id="coordinateToast" class="coordinate-toast" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>

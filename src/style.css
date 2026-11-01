@@ -1,0 +1,270 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #17251f;
+  background: #dfe7df;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.map-shell {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.map-shell {
+  position: relative;
+  background: #e7ece7;
+  isolation: isolate;
+}
+
+#mapCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+#mapCanvas.is-dragging {
+  cursor: grabbing;
+}
+
+.topbar {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 66px;
+  padding: 10px 14px;
+  border: 1px solid rgb(23 37 31 / 10%);
+  border-radius: 16px;
+  background: rgb(255 255 250 / 94%);
+  box-shadow: 0 6px 24px rgb(23 37 31 / 12%);
+  backdrop-filter: blur(12px);
+}
+
+.brand,
+.top-actions {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 10px;
+}
+
+.brand-mark {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.brand small {
+  margin-top: 3px;
+  color: #637168;
+  font-size: 11px;
+}
+
+.top-actions {
+  gap: 12px;
+}
+
+.map-status {
+  max-width: min(45vw, 380px);
+  color: #59685e;
+  font-size: 12px;
+  text-align: right;
+}
+
+.reload-button,
+.map-controls button {
+  display: grid;
+  place-items: center;
+  border: 1px solid #d5ddd5;
+  background: #fff;
+  color: #17251f;
+  cursor: pointer;
+}
+
+.reload-button {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.reload-button:hover,
+.map-controls button:hover {
+  background: #edf4ed;
+}
+
+.map-controls {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 18px;
+  display: grid;
+  gap: 5px;
+  width: 46px;
+  padding: 6px;
+  transform: translateY(-50%);
+  border: 1px solid rgb(23 37 31 / 10%);
+  border-radius: 14px;
+  background: rgb(255 255 250 / 94%);
+  box-shadow: 0 5px 18px rgb(23 37 31 / 12%);
+}
+
+.map-controls button {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.map-controls output {
+  padding: 3px 0;
+  color: #66746b;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.map-controls .home-button {
+  font-size: 18px;
+}
+
+.control-divider {
+  height: 1px;
+  margin: 1px 2px;
+  background: #e1e6e1;
+}
+
+.map-hint {
+  position: absolute;
+  z-index: 1;
+  bottom: 42px;
+  left: 50%;
+  padding: 8px 12px;
+  transform: translateX(-50%);
+  border: 1px solid rgb(23 37 31 / 8%);
+  border-radius: 999px;
+  background: rgb(255 255 250 / 88%);
+  color: #58675e;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.map-attribution {
+  position: absolute;
+  z-index: 1;
+  right: 12px;
+  bottom: 10px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: rgb(255 255 250 / 88%);
+  color: #526057;
+  font-size: 10px;
+}
+
+.map-attribution a {
+  color: inherit;
+}
+
+.coordinate-toast {
+  position: absolute;
+  z-index: 3;
+  bottom: 78px;
+  left: 50%;
+  padding: 10px 14px;
+  transform: translate(-50%, 8px);
+  border-radius: 10px;
+  background: #17251f;
+  color: #fff;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.coordinate-toast.is-visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    min-height: 58px;
+    padding: 8px 10px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand strong {
+    font-size: 13px;
+  }
+
+  .brand small {
+    font-size: 10px;
+  }
+
+  .map-status {
+    max-width: 31vw;
+    font-size: 10px;
+  }
+
+  .reload-button {
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .top-actions {
+    gap: 7px;
+  }
+
+  .map-controls {
+    right: 10px;
+  }
+
+  .map-hint {
+    bottom: 44px;
+    font-size: 10px;
+  }
+}
